@@ -1,19 +1,19 @@
 class Model {
     constructor() {
-        this._users = [
+        this._games = [
             {
                 id: 0,
-                age: 26,
-                phone: 555,
-                userName: 'Musa',
+                time: "0:00:00",
+                clickCounter: 555,
+                gamePosition: [1,2,3],
             }
         ]
     }
 
-    getUsers = () => this._users;
+    getGames = () => this._games;
 
-    saveNewUser = newUser => {
-        this._users.push(newUser);
+    saveNewGame = newGame => {
+        this._games.push(newGame);
     }
 }
 

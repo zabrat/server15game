@@ -9,28 +9,28 @@ class App {
         this._app.use(express.json());
         this._app.use('/', express.static(path.resolve(__dirname, '../public')));
 
-        this._app.get('/getUsers', this.onGetUsers);
-        this._app.post('/addNewUser', this.onSaveNewUser);
+        this._app.get('/allGames', this.onGetGames);
+        this._app.post('/addNewGame', this.onSaveNewGame);
+        this._app.post('/allGames/id', this.onSaveNewGame);
     }
 
-    onGetUsers = (req, res) => {
-        const users = this._db.getUsers();
+    onGetGames = (req, res) => {
+        const games = this._db.getGames();
 
-        res.send(users);
+        res.send(games);
         res.end();
     }
 
-    onSaveNewUser = (req, res) => {
+    onSaveNewGame = (req, res) => {
         const { body } = req;
 
         console.log(body)
 
-        this._db.saveNewUser(body);
+        this._db.saveNewGame(body);
         res.end();
     }
 
     getApp = () => this._app;
-
 }
 
 module.exports = App;
